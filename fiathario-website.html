@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiathario — Esmeraldas Colombianas, Herencia Atemporal</title>
+<meta name="description" content="Joyería de alta gama con esmeraldas colombianas certificadas. Colecciones exclusivas, piezas bespoke y gemas de inversión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   TOKENS
+======================================== */
+:root {
+  --ivory: #F8F5EF;
+  --ivory-dim: rgba(248,245,239,0.85);
+  --ink: #111111;
+  --ink-dim: rgba(17,17,17,0.55);
+  --ink-faint: rgba(17,17,17,0.1);
+  --champagne: #D8C4A0;
+  --gold: #C8A86B;
+  --emerald: #046A4E;
+  --emerald-dim: rgba(4,106,78,0.12);
+  --stone: #D6D3CE;
+  --white: #ffffff;
+  --section-pad: clamp(5rem, 10vh, 8rem);
+  --side-pad: clamp(1.5rem, 6vw, 5rem);
+  --max-w: 1280px;
+}
+
+/* ========================================
+   RESET & BASE
+======================================== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+button { border:none; background:none; cursor:pointer; font-family:inherit; }
+ul { list-style:none; }
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+h1,h2,h3,h4,h5,.serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold);
+}
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink-dim);
+  max-width: 58ch;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-dark {
+  background: var(--ink);
+  color: var(--ivory);
+  border: 1px solid var(--ink);
+}
+.btn-dark:hover {
+  background: var(--emerald);
+  border-color: var(--emerald);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(17,17,17,0.35);
+}
+.btn-outline:hover {
+  border-color: var(--emerald);
+  color: var(--emerald);
+}
+.btn-emerald {
+  background: var(--emerald);
+  color: var(--ivory);
+  border: 1px solid var(--emerald);
+}
+.btn-emerald:hover {
+  background: #035a41;
+  border-color: #035a41;
+}
+.btn-light {
+  background: var(--ivory);
+  color: var(--ink);
+  border: 1px solid var(--champagne);
+}
+.btn-light:hover {
+  border-color: var(--gold);
+  color: var(--emerald);
+}
+
+/* ========================================
+   SECTION LAYOUT
+======================================== */
+.section {
+  padding: var(--section-pad) var(--side-pad);
+}
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.section-head {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.section-head .eyebrow { display: block; margin-bottom: 1rem; }
+.section-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+/* ========================================
+   PRELOADER
+======================================== */
+#preloader {
+  position: fixed; inset:0;
+  background: var(--ivory);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.preloader-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  letter-spacing: 0.5em;
+  padding-right: 0.5em;
+  opacity:0;
+  animation: markIn 1.5s ease forwards;
+}
+@keyframes markIn {
+  0%   { opacity:0; letter-spacing:0.8em; }
+  60%  { opacity:1; }
+  100% { opacity:1; letter-spacing:0.5em; }
+}
+
+/* ========================================
+   HEADER / NAV
+======================================== */
+header {
+  position: fixed; top:0; left:0; right:0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem var(--side-pad);
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+header.scrolled {
+  background: var(--ivory-dim);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem var(--side-pad);
+  box-shadow: 0 1px 0 var(--ink-faint);
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  letter-spacing: 0.42em;
+  padding-right: 0.42em;
+  color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  gap: clamp(1.2rem, 2.5vw, 2.5rem);
+}
+.nav-links li a, .nav-links li button {
+  color: var(--ink-dim);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+.nav-links li a:hover,
+.nav-links li button:hover,
+.nav-links li a.active,
+.nav-links li button.active { color: var(--emerald); }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  cursor: pointer;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s ease;
+}
+
+/* Mobile nav */
+.nav-mobile {
+  position: fixed;
+  top:0; right:0; bottom:0;
+  width: min(80vw, 320px);
+  background: var(--white);
+  z-index: 1100;
+  padding: 5rem 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.45s ease;
+  box-shadow: -10px 0 40px rgba(17,17,17,0.1);
+}
+.nav-mobile.open { transform: translateX(0); }
+.nav-mobile a, .nav-mobile button {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  color: var(--ink);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+.nav-mobile a:hover, .nav-mobile button:hover { color: var(--emerald); }
+.nav-overlay {
+  position: fixed; inset:0;
+  background: rgba(17,17,17,0.4);
+  z-index: 1050;
+  opacity:0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+.nav-overlay.open { opacity:1; pointer-events:all; }
+.nav-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  font-size: 1.4rem;
+  background: none;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 1;
+  padding: 4px;
+}
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ========================================
+   PAGE ROUTER
+======================================== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ========================================
+   REVEAL ANIMATIONS
+======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ========================================
+   HOME PAGE
+======================================== */
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 38%, #ffffff 0%, #f5f3ee 55%, #ece8e0 100%);
+  overflow: hidden;
+}
+.hero-content {
+  position: relative; z-index:2;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(5rem,10vh,7rem) var(--side-pad) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero .eyebrow { margin-bottom: 1.2rem; animation: fadeUp 1s ease both; animation-delay:0.4s; }
+.hero h1 {
+  font-size: clamp(2.4rem,5.5vw,4.8rem);
+  font-weight: 300;
+  max-width: 18ch;
+  animation: fadeUp 1s ease both;
+  animation-delay: 0.6s;
+}
+.hero h1 em { font-style:italic; color:var(--emerald); }
+.hero-sub {
+  margin-top: 1.4rem;
+  max-width: 44ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-dim);
+  animation: fadeUp 1s ease both;
+  animation-delay: 0.8s;
+}
+.hero-actions {
+  margin-top: 2.2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 1s ease both;
+  animation-delay: 1s;
+}
+
+/* Ring SVG */
+.ring-stage {
+  margin-top: 3.5rem;
+  animation: fadeUp 1s ease both;
+  animation-delay: 1.1s;
+}
+.ring-3d {
+  width: clamp(160px, 22vw, 240px);
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(4,106,78,0.18));
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+.ring-glint { animation: glint 3s ease-in-out infinite alternate; }
+@keyframes glint {
+  from { opacity:0.4; }
+  to   { opacity:1; }
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.scroll-cue::after {
+  content: '';
+  display: block;
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Story */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+.story-media {
+  background: linear-gradient(135deg, #d4c9b8, #c8bfb0);
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+}
+.story-media::before {
+  content: '';
+  position: absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(4,106,78,0.25), transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(200,168,107,0.2), transparent 50%);
+}
+.story-media-label {
+  position: absolute;
+  bottom: 2rem; left: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+}
+.story-content {
+  background: var(--white);
+  padding: clamp(3rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+}
+.story-content h2 {
+  font-size: clamp(1.9rem,3.5vw,3rem);
+  font-weight: 300;
+  line-height: 1.2;
+}
+.story-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ink-dim);
+  max-width: 50ch;
+}
+.story-quote {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--emerald);
+  line-height: 1.5;
+}
+@media (max-width:860px) {
+  .story { grid-template-columns:1fr; }
+  .story-media { min-height: 280px; }
+}
+
+/* Orígenes strip */
+.origins-strip {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: clamp(3rem,6vh,5rem) var(--side-pad);
+}
+.origins-strip .section-inner {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+}
+.origin-block {
+  padding: 2rem clamp(1.5rem,3vw,3rem);
+  border-right: 1px solid rgba(248,245,239,0.12);
+}
+.origin-block:last-child { border-right:none; }
+.origin-block .eyebrow { color: var(--champagne); margin-bottom: 1rem; }
+.origin-block h3 {
+  font-size: clamp(1.5rem,3vw,2.2rem);
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+  color: var(--ivory);
+}
+.origin-block p { font-size:0.88rem; line-height:1.8; color: rgba(248,245,239,0.55); }
+@media (max-width:700px) {
+  .origins-strip .section-inner { grid-template-columns:1fr; }
+  .origin-block { border-right:none; border-bottom: 1px solid rgba(248,245,239,0.12); }
+  .origin-block:last-child { border-bottom:none; }
+}
+
+/* Featured pieces */
+.featured-section { background: var(--ivory); }
+.pieces-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(1.5rem,3vw,2.5rem);
+}
+.piece-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.piece-card:hover { transform: translateY(-6px); }
+.piece-thumb {
+  aspect-ratio: 3/4;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--stone), #e8e4dd);
+}
+.piece-thumb-inner {
+  position: absolute; inset:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.piece-thumb svg { width: 45%; opacity: 0.7; }
+.piece-tag {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+}
+.piece-thumb-overlay {
+  position: absolute; inset:0;
+  background: rgba(4,106,78,0.08);
+  opacity:0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.piece-card:hover .piece-thumb-overlay { opacity:1; }
+.piece-thumb-overlay span {
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+}
+.piece-info { padding: 1.4rem 0 0; }
+.piece-info .eyebrow { margin-bottom: 0.5rem; }
+.piece-info h4 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+.piece-info p {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  line-height: 1.65;
+}
+.piece-price {
+  margin-top: 0.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--emerald);
+}
+@media (max-width:900px) {
+  .pieces-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:540px) {
+  .pieces-grid { grid-template-columns:1fr; }
+}
+
+/* Bespoke banner */
+.bespoke-banner {
+  background: var(--emerald);
+  color: var(--ivory);
+  padding: clamp(4rem,8vw,6rem) var(--side-pad);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.bespoke-banner h2 {
+  font-size: clamp(2rem,4.5vw,3.6rem);
+  font-weight: 300;
+  color: var(--ivory);
+  max-width: 22ch;
+}
+.bespoke-banner p { color: rgba(248,245,239,0.7); max-width: 50ch; line-height:1.75; }
+.btn-ivory {
+  background: var(--ivory);
+  color: var(--emerald);
+  border: 1px solid var(--ivory);
+  padding: 0.9rem 2.2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.btn-ivory:hover {
+  background: transparent;
+  color: var(--ivory);
+}
+
+/* Testimonials */
+.testimonials-section { background: var(--white); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(1.5rem,3vw,3rem);
+}
+.testimonial-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--ink-faint);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.testimonial-stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.2em; }
+.testimonial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink);
+  flex: 1;
+}
+.testimonial-author { font-size: 0.78rem; letter-spacing: 0.12em; color: var(--ink-dim); }
+@media (max-width: 860px) {
+  .testimonials-grid { grid-template-columns:1fr; }
+}
+
+/* ========================================
+   COLECCIONES PAGE
+======================================== */
+.page-hero {
+  padding-top: clamp(7rem,14vh,10rem);
+  padding-bottom: clamp(3rem,6vh,5rem);
+  padding-left: var(--side-pad);
+  padding-right: var(--side-pad);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.page-hero .eyebrow { display:block; margin-bottom: 1rem; }
+.page-hero h1 {
+  font-size: clamp(2.5rem,5.5vw,4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.page-hero p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink-dim);
+  max-width: 55ch;
+}
+
+.filter-bar {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--side-pad) 3rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 0.5rem 1.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink-faint);
+  color: var(--ink-dim);
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--ink);
+  color: var(--ivory);
+  border-color: var(--ink);
+}
+
+.catalog-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--side-pad) var(--section-pad);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(2rem,3vw,2.5rem);
+}
+@media (max-width:860px) { .catalog-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:540px) { .catalog-grid { grid-template-columns:1fr; } }
+
+/* ========================================
+   ESMERALDAS PAGE
+======================================== */
+.emerald-hero {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: clamp(8rem,15vh,12rem) var(--side-pad) clamp(5rem,8vh,7rem);
+  text-align: center;
+}
+.emerald-hero .eyebrow { color: var(--champagne); display:block; margin-bottom:1.2rem; }
+.emerald-hero h1 {
+  font-size: clamp(2.5rem,5.5vw,4.8rem);
+  font-weight: 300;
+  color: var(--ivory);
+  max-width: 20ch;
+  margin: 0 auto 1.5rem;
+}
+.emerald-hero p {
+  font-size: 1.05rem;
+  color: rgba(248,245,239,0.6);
+  max-width: 52ch;
+  margin: 0 auto;
+  line-height:1.8;
+}
+
+.gem-anatomy {
+  background: var(--white);
+  padding: var(--section-pad) var(--side-pad);
+}
+.gem-anatomy .section-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,6vw,6rem);
+  align-items: center;
+}
+.gem-diagram-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gem-diagram-wrap svg {
+  width: min(360px, 100%);
+  filter: drop-shadow(0 20px 50px rgba(4,106,78,0.2));
+}
+.gem-stats-list { display: flex; flex-direction: column; gap: 0; }
+.gem-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--ink-faint);
+}
+.gem-stat-row:first-child { border-top: 1px solid var(--ink-faint); }
+.gem-stat-label { font-size: 0.8rem; letter-spacing:0.12em; color:var(--ink-dim); text-transform:uppercase; }
+.gem-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--emerald);
+}
+@media (max-width:860px) {
+  .gem-anatomy .section-inner { grid-template-columns:1fr; }
+}
+
+.grades-section { background: var(--ivory); padding: var(--section-pad) var(--side-pad); }
+.grades-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--ink-faint);
+  border: 1px solid var(--ink-faint);
+}
+.grade-block {
+  background: var(--white);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.grade-color {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  margin-bottom: 0.4rem;
+}
+.grade-block h4 { font-size: 1.2rem; font-weight:400; }
+.grade-block p { font-size: 0.85rem; color:var(--ink-dim); line-height:1.7; }
+@media (max-width:860px) { .grades-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:520px) { .grades-grid { grid-template-columns:1fr; } }
+
+.cert-section { background: var(--ink); color: var(--ivory); padding: var(--section-pad) var(--side-pad); }
+.cert-section .section-head h2 { color: var(--ivory); }
+.cert-cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(1.5rem,2vw,2rem);
+}
+.cert-card-item {
+  border: 1px solid rgba(248,245,239,0.12);
+  padding: 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cert-card-item .glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--gold);
+}
+.cert-card-item h4 { font-size:1.15rem; font-weight:400; color:var(--ivory); }
+.cert-card-item p { font-size:0.85rem; color:rgba(248,245,239,0.5); line-height:1.75; }
+@media (max-width:860px) { .cert-cards { grid-template-columns:1fr; } }
+
+/* ========================================
+   BESPOKE PAGE
+======================================== */
+.bespoke-hero-section {
+  min-height: 60vh;
+  background: var(--ink);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(8rem,15vh,12rem) var(--side-pad) clamp(4rem,6vh,5rem);
+}
+.bespoke-hero-section h1 {
+  font-size: clamp(2.5rem,5.5vw,4.8rem);
+  font-weight: 300;
+  color: var(--ivory);
+  max-width: 20ch;
+  line-height: 1.1;
+}
+.bespoke-hero-section h1 em { font-style: italic; color: var(--champagne); }
+.bespoke-hero-section p {
+  margin-top: 1.5rem;
+  color: rgba(248,245,239,0.55);
+  max-width: 50ch;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.process-section { background: var(--white); padding: var(--section-pad) var(--side-pad); }
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.process-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--ink-faint);
+  align-items: start;
+}
+.process-step:first-child { border-top: 1px solid var(--ink-faint); }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(17,17,17,0.1);
+  line-height: 1;
+}
+.step-title h4 { font-size: 1.35rem; font-weight:400; margin-bottom: 0.4rem; }
+.step-title .eyebrow { margin-bottom: 0.5rem; }
+.step-detail { font-size: 0.9rem; color: var(--ink-dim); line-height: 1.8; }
+@media (max-width:860px) {
+  .process-step { grid-template-columns: 50px 1fr; }
+  .step-detail { grid-column: 2; }
+}
+@media (max-width:540px) {
+  .process-step { grid-template-columns: 1fr; }
+  .step-num { font-size:2rem; }
+}
+
+.bespoke-form-section { background: var(--ivory); padding: var(--section-pad) var(--side-pad); }
+.bespoke-form-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.bespoke-form-wrap .section-head { text-align:left; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-dim);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--white);
+  border: 1px solid rgba(17,17,17,0.15);
+  padding: 0.9rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--emerald);
+}
+.form-group textarea { resize: vertical; min-height: 130px; }
+.form-grid .btn { margin-top: 0.5rem; }
+@media (max-width:640px) {
+  .form-grid { grid-template-columns:1fr; }
+  .form-group.full { grid-column:1; }
+}
+
+/* ========================================
+   JOURNAL PAGE
+======================================== */
+.journal-featured {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: clamp(8rem,15vh,11rem) var(--side-pad) clamp(4rem,6vh,5rem);
+}
+.journal-featured-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,5vw,6rem);
+  align-items: end;
+}
+.journal-featured-thumb {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #1a2e25, #0d5038);
+  position: relative;
+  overflow: hidden;
+}
+.journal-featured-thumb::after {
+  content: '';
+  position: absolute; inset:0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(4,106,78,0.4), transparent 60%);
+}
+.journal-featured-text { padding-bottom: 1rem; }
+.journal-featured-text .eyebrow { color: var(--champagne); margin-bottom:1.2rem; }
+.journal-featured-text h2 {
+  font-size: clamp(2rem,4vw,3.2rem);
+  font-weight: 300;
+  color: var(--ivory);
+  margin-bottom: 1.2rem;
+}
+.journal-featured-text p { color: rgba(248,245,239,0.55); line-height:1.8; margin-bottom:1.8rem; }
+@media (max-width:860px) {
+  .journal-featured-inner { grid-template-columns:1fr; }
+  .journal-featured-thumb { display:none; }
+}
+
+.journal-articles { background: var(--ivory); padding: var(--section-pad) var(--side-pad); }
+.articles-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: clamp(2rem,3vw,3rem);
+}
+.article-card { cursor: pointer; }
+.article-thumb {
+  aspect-ratio: 4/3;
+  background: linear-gradient(145deg, var(--stone), #d0ccc5);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.article-thumb::before {
+  content: '';
+  position: absolute; inset:0;
+  background: radial-gradient(ellipse at 60% 30%, rgba(4,106,78,0.2), transparent 55%);
+  transition: opacity 0.4s ease;
+}
+.article-card:hover .article-thumb::before { opacity:1.5; }
+.article-card .eyebrow { margin-bottom:0.6rem; }
+.article-card h3 { font-size: 1.3rem; font-weight:400; margin-bottom:0.6rem; line-height:1.3; }
+.article-card p { font-size:0.85rem; color:var(--ink-dim); line-height:1.7; margin-bottom:1rem; }
+.article-card .read-link {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (max-width:860px) { .articles-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:540px) { .articles-grid { grid-template-columns:1fr; } }
+
+/* ========================================
+   CONTACTO PAGE
+======================================== */
+.contact-layout {
+  padding: clamp(7rem,12vh,9rem) var(--side-pad) var(--section-pad);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(3rem,6vw,6rem);
+  align-items: start;
+}
+.contact-info { padding-top: 1rem; }
+.contact-info .eyebrow { margin-bottom:1rem; }
+.contact-info h1 {
+  font-size: clamp(2rem,4.5vw,3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.contact-info p { font-size:0.95rem; color:var(--ink-dim); line-height:1.8; margin-bottom:2rem; }
+.contact-methods { display: flex; flex-direction: column; gap:0; }
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--ink-faint);
+}
+.contact-method:first-child { border-top: 1px solid var(--ink-faint); }
+.contact-method-icon {
+  width: 40px; height: 40px;
+  background: var(--emerald-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--emerald);
+  font-size: 1.1rem;
+}
+.contact-method-info h5 {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-dim);
+  margin-bottom: 0.3rem;
+  font-family: 'Inter', sans-serif;
+}
+.contact-method-info a,
+.contact-method-info p {
+  font-size: 0.95rem;
+  color: var(--ink);
+  transition: color 0.3s ease;
+}
+.contact-method-info a:hover { color: var(--emerald); }
+
+.contact-form-wrap {
+  background: var(--white);
+  padding: clamp(2.5rem,4vw,3.5rem);
+  border: 1px solid var(--ink-faint);
+}
+.contact-form-wrap h3 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+@media (max-width:860px) {
+  .contact-layout { grid-template-columns:1fr; }
+}
+
+/* WhatsApp floating */
+.wa-float {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  z-index: 900;
+  background: #25D366;
+  color: white;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+.wa-float svg { width: 26px; height: 26px; fill: white; }
+
+/* ========================================
+   FOOTER
+======================================== */
+footer {
+  background: var(--white);
+  border-top: 1px solid var(--ink-faint);
+  padding: clamp(3.5rem,7vh,5.5rem) var(--side-pad) 2rem;
+}
+.footer-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3,1fr);
+  gap: clamp(2rem,4vw,4rem);
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--ink-faint);
+}
+.footer-brand .logo { font-size: 1.35rem; margin-bottom: 1rem; display:inline-block; }
+.footer-brand p { font-size:0.85rem; color:var(--ink-dim); line-height:1.8; max-width:30ch; }
+.footer-col h5 {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+.footer-col ul { display:flex; flex-direction:column; gap:0.7rem; }
+.footer-col li button,
+.footer-col li a {
+  font-size: 0.88rem;
+  color: var(--ink-dim);
+  transition: color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.footer-col li button:hover,
+.footer-col li a:hover { color: var(--emerald); }
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.76rem;
+  color: rgba(17,17,17,0.3);
+  letter-spacing: 0.06em;
+}
+@media (max-width:860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width:520px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ========================================
+   FOCUS & ACCESSIBILITY
+======================================== */
+a:focus-visible, button:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-mark">FIATHARIO</div>
+</div>
+
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="logo" onclick="navigate('home')" tabindex="0" role="button" aria-label="Ir a inicio">FIATHARIO</div>
+  <nav aria-label="Navegación principal">
+    <ul class="nav-links">
+      <li><button onclick="navigate('collections')" class="nav-btn" data-page="collections">Colecciones</button></li>
+      <li><button onclick="navigate('emeralds')" class="nav-btn" data-page="emeralds">Esmeraldas</button></li>
+      <li><button onclick="navigate('bespoke')" class="nav-btn" data-page="bespoke">Bespoke</button></li>
+      <li><button onclick="navigate('journal')" class="nav-btn" data-page="journal">Journal</button></li>
+      <li><button onclick="navigate('contact')" class="nav-btn" data-page="contact">Contacto</button></li>
+    </ul>
+  </nav>
+  <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-mobile" id="navMobile" aria-label="Menú móvil">
+  <button class="nav-close" onclick="closeNav()" aria-label="Cerrar menú">✕</button>
+  <button onclick="navigate('home');closeNav()">Inicio</button>
+  <button onclick="navigate('collections');closeNav()">Colecciones</button>
+  <button onclick="navigate('emeralds');closeNav()">Esmeraldas</button>
+  <button onclick="navigate('bespoke');closeNav()">Bespoke</button>
+  <button onclick="navigate('journal');closeNav()">Journal</button>
+  <button onclick="navigate('contact');closeNav()">Contacto</button>
+</nav>
+
+<!-- ==========================================
+     PAGE: HOME
+=========================================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Fiathario Jewelry — Maison de Esmeraldas</span>
+      <h1>Donde las esmeraldas colombianas se convierten en obras <em>atemporales</em></h1>
+      <p class="hero-sub">Un mundo curado de gemas extraordinarias y joyería bespoke, extraídas de las profundidades de Muzo, Chivor y Coscuez y moldeadas por maestros artesanos.</p>
+      <div class="hero-actions">
+        <button class="btn btn-dark" onclick="navigate('collections')">Descubrir Colecciones</button>
+        <button class="btn btn-outline" onclick="navigate('contact')">Cita Privada</button>
+      </div>
+      <div class="ring-stage" aria-hidden="true">
+        <div class="ring-3d">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bandGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f3e3c4"/>
+                <stop offset="45%" stop-color="#C8A86B"/>
+                <stop offset="100%" stop-color="#9c7c43"/>
+              </linearGradient>
+              <radialGradient id="emeraldGem" cx="35%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#3fcf9e"/>
+                <stop offset="45%" stop-color="#0d8a64"/>
+                <stop offset="100%" stop-color="#04392a"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="100" cy="105" rx="62" ry="34" fill="none" stroke="url(#bandGold)" stroke-width="10"/>
+            <ellipse cx="100" cy="103" rx="62" ry="34" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" class="ring-glint"/>
+            <g class="ring-gem">
+              <polygon points="100,28 130,52 118,90 82,90 70,52" fill="url(#emeraldGem)"/>
+              <polygon points="100,28 130,52 118,90 82,90 70,52" fill="none" stroke="#04392a" stroke-width="1" opacity="0.5"/>
+              <line x1="100" y1="28" x2="100" y2="90" stroke="#0a3b2c" stroke-width="0.6" opacity="0.4"/>
+              <line x1="70" y1="52" x2="130" y2="52" stroke="#0a3b2c" stroke-width="0.6" opacity="0.4"/>
+              <polygon points="100,40 88,58 112,58" fill="rgba(255,255,255,0.35)" class="ring-glint"/>
+            </g>
+            <circle cx="78" cy="58" r="3.5" fill="url(#bandGold)"/>
+            <circle cx="122" cy="58" r="3.5" fill="url(#bandGold)"/>
+            <circle cx="86" cy="86" r="3" fill="url(#bandGold)"/>
+            <circle cx="114" cy="86" r="3" fill="url(#bandGold)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story-media reveal">
+      <div class="story-media-label">Atelier, Bogotá</div>
+    </div>
+    <div class="story-content reveal reveal-delay-1">
+      <span class="eyebrow">Nuestra Maison</span>
+      <h2>Una casa construida sobre el color de Colombia</h2>
+      <p>Fiathario nació de una convicción singular: que las mejores esmeraldas del mundo — un verde sin igual, nacido en las profundidades de los Andes — merecían una maison a la altura de su rareza.</p>
+      <blockquote class="story-quote">"No vendemos joyas. Custodiamos fragmentos de la historia de la tierra, tallados para ser llevados."</blockquote>
+      <p>Desde un taller discreto en Bogotá, nuestros gemólogos y artesanos seleccionan, tallan y engastan cada piedra con una reverencia moldeada por generaciones de herencia minera colombiana.</p>
+      <button class="btn btn-outline" onclick="navigate('emeralds')">Conocer las Esmeraldas</button>
+    </div>
+  </section>
+
+  <!-- ORÍGENES STRIP -->
+  <div class="origins-strip">
+    <div class="section-inner">
+      <div class="origin-block reveal">
+        <span class="eyebrow">Boyacá, Colombia</span>
+        <h3>Muzo</h3>
+        <p>La mina legendaria de las joyas de la Corona Española — reconocida por un verde intenso ligeramente azulado, codiciado por coleccionistas durante cinco siglos.</p>
+      </div>
+      <div class="origin-block reveal reveal-delay-1">
+        <span class="eyebrow">Boyacá, Colombia</span>
+        <h3>Chivor</h3>
+        <p>Oculta durante siglos antes de ser redescubierta, Chivor produce esmeraldas de una luminosidad excepcional con una brillantez incomparable.</p>
+      </div>
+      <div class="origin-block reveal reveal-delay-2">
+        <span class="eyebrow">Boyacá, Colombia</span>
+        <h3>Coscuez</h3>
+        <p>Una de las fuentes más prolíficas de esmeralda fina; Coscuez produce piedras de saturación vívida y tamaños notables.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIEZAS DESTACADAS -->
+  <section class="section featured-section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow">Piezas Destacadas</span>
+        <h2>Una selección de la colección actual</h2>
+        <p class="lead">Cada pieza es única — aquí una muestra de lo que encontrarás en nuestra maison.</p>
+      </div>
+      <div class="pieces-grid">
+        <div class="piece-card reveal" onclick="navigate('collections')">
+          <div class="piece-thumb">
+            <div class="piece-thumb-inner">
+              <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="g1" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stop-color="#3fcf9e"/>
+                    <stop offset="100%" stop-color="#04392a"/>
+                  </radialGradient>
+                  <linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f3e3c4"/>
+                    <stop offset="100%" stop-color="#9c7c43"/>
+                  </linearGradient>
+                </defs>
+                <ellipse cx="50" cy="100" rx="32" ry="18" fill="none" stroke="url(#g1b)" stroke-width="7"/>
+                <polygon points="50,15 68,38 60,72 40,72 32,38" fill="url(#g1)"/>
+                <polygon points="50,25 42,44 58,44" fill="rgba(255,255,255,0.3)"/>
+              </svg>
+            </div>
+            <span class="piece-tag">Muzo Origin</span>
+            <div class="piece-thumb-overlay"><span>Ver Pieza</span></div>
+          </div>
+          <div class="piece-info">
+            <span class="eyebrow">Anillo Solitario</span>
+            <h4>The Muzo Solitaire</h4>
+            <p>Esmeralda Muzo de 3.2ct en engaste de oro de 18k. Certificado GIA.</p>
+            <div class="piece-price">Consultar precio</div>
+          </div>
+        </div>
+        <div class="piece-card reveal reveal-delay-1" onclick="navigate('collections')">
+          <div class="piece-thumb" style="background:linear-gradient(145deg,#c8bfb0,#d4c9b8)">
+            <div class="piece-thumb-inner">
+              <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="g2" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stop-color="#5ee0b0"/>
+                    <stop offset="100%" stop-color="#046A4E"/>
+                  </radialGradient>
+                  <linearGradient id="g2b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f3e3c4"/>
+                    <stop offset="100%" stop-color="#9c7c43"/>
+                  </linearGradient>
+                </defs>
+                <ellipse cx="30" cy="60" rx="22" ry="12" fill="none" stroke="url(#g2b)" stroke-width="5"/>
+                <polygon points="30,14 46,32 38,58 22,58 14,32" fill="url(#g2)"/>
+                <ellipse cx="90" cy="60" rx="22" ry="12" fill="none" stroke="url(#g2b)" stroke-width="5"/>
+                <polygon points="90,14 106,32 98,58 82,58 74,32" fill="url(#g2)"/>
+                <rect x="52" y="56" width="16" height="5" fill="url(#g2b)" rx="2"/>
+              </svg>
+            </div>
+            <span class="piece-tag">Aretes</span>
+            <div class="piece-thumb-overlay"><span>Ver Pieza</span></div>
+          </div>
+          <div class="piece-info">
+            <span class="eyebrow">Alta Joyería</span>
+            <h4>Aretes Chivor Drop</h4>
+            <p>Par de esmeraldas Chivor de 2.1ct c/u en monturas de oro blanco de 18k.</p>
+            <div class="piece-price">Consultar precio</div>
+          </div>
+        </div>
+        <div class="piece-card reveal reveal-delay-2" onclick="navigate('collections')">
+          <div class="piece-thumb" style="background:linear-gradient(145deg,#1a2e25,#0d3d2c)">
+            <div class="piece-thumb-inner">
+              <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="g3" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stop-color="#3fcf9e"/>
+                    <stop offset="100%" stop-color="#04392a"/>
+                  </radialGradient>
+                  <linearGradient id="g3b" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f3e3c4"/>
+                    <stop offset="100%" stop-color="#9c7c43"/>
+                  </linearGradient>
+                </defs>
+                <rect x="30" y="20" width="40" height="60" rx="2" fill="none" stroke="url(#g3b)" stroke-width="4"/>
+                <polygon points="50,30 62,42 62,58 50,70 38,58 38,42" fill="url(#g3)"/>
+                <polygon points="50,33 56,43 56,57 50,67 44,57 44,43" fill="rgba(255,255,255,0.2)"/>
+                <line x1="50" y1="80" x2="50" y2="95" stroke="url(#g3b)" stroke-width="3"/>
+              </svg>
+            </div>
+            <span class="piece-tag">Colgante</span>
+            <div class="piece-thumb-overlay"><span>Ver Pieza</span></div>
+          </div>
+          <div class="piece-info">
+            <span class="eyebrow">Colección Atelier</span>
+            <h4>Pendant Coscuez</h4>
+            <p>Esmeralda hexagonal Coscuez de 5.4ct en platino. Pieza única.</p>
+            <div class="piece-price">Consultar precio</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3.5rem;">
+        <button class="btn btn-outline" onclick="navigate('collections')">Ver Colección Completa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESPOKE BANNER -->
+  <div class="bespoke-banner">
+    <span class="eyebrow" style="color:var(--champagne)">Atelier Privé</span>
+    <h2>¿Tienes una visión? La hacemos realidad.</h2>
+    <p>Cada comisión Fiathario comienza con una conversación y termina con una pieza que no existe en ningún otro lugar del mundo.</p>
+    <button class="btn-ivory" onclick="navigate('bespoke')">Comenzar una Comisión →</button>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow">Clientes</span>
+        <h2>Lo que dicen nuestros coleccionistas</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"La pieza bespoke que Fiathario creó para el compromiso de mi hija es sencillamente incomparable. La piedra, la montura, el proceso entero — todo fue impecable."</p>
+          <span class="testimonial-author">— M. Rodríguez, Bogotá</span>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Como coleccionista de gemas, tengo estándares muy altos. Fiathario es la única casa en Colombia que trabaja con la documentación y certificación que yo requiero."</p>
+          <span class="testimonial-author">— J. Camacho, Medellín</span>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Adquirí una esmeralda Muzo para diversificar mi portafolio. El equipo de Fiathario me guió en cada paso con profesionalismo y total transparencia."</p>
+          <span class="testimonial-author">— A. Ospina, Cali</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ==========================================
+     PAGE: COLECCIONES
+=========================================== -->
+<div id="page-collections" class="page">
+
+  <div class="page-hero">
+    <span class="eyebrow">Colecciones</span>
+    <h1>Alta joyería de<br><em style="font-style:italic;color:var(--emerald)">esmeralda colombiana</em></h1>
+    <p>Cada pieza lleva una gema certificada de origen colombiano trazado, engastada a mano en nuestro atelier de Bogotá.</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterPieces(this,'all')">Todas</button>
+    <button class="filter-btn" onclick="filterPieces(this,'rings')">Anillos</button>
+    <button class="filter-btn" onclick="filterPieces(this,'earrings')">Aretes</button>
+    <button class="filter-btn" onclick="filterPieces(this,'pendants')">Colgantes</button>
+    <button class="filter-btn" onclick="filterPieces(this,'bracelets')">Brazaletes</button>
+    <button class="filter-btn" onclick="filterPieces(this,'investment')">Inversión</button>
+  </div>
+
+  <div class="catalog-grid" id="catalogGrid">
+    <!-- Rendered by JS -->
+  </div>
+
+</div><!-- /page-collections -->
+
+<!-- ==========================================
+     PAGE: ESMERALDAS
+=========================================== -->
+<div id="page-emeralds" class="page">
+
+  <div class="emerald-hero">
+    <span class="eyebrow">Esmeraldas Colombianas</span>
+    <h1>El verde más raro del planeta</h1>
+    <p>Formadas hace más de 50 millones de años en venas hidrotermales únicas de los Andes colombianos, nuestras esmeraldas llevan una profundidad de color y claridad sin igual en el mundo.</p>
+  </div>
+
+  <!-- Anatomy -->
+  <section class="gem-anatomy">
+    <div class="section-inner">
+      <div class="gem-diagram-wrap reveal">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de esmeralda tallada">
+          <defs>
+            <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0d8a64"/>
+              <stop offset="50%" stop-color="#046A4E"/>
+              <stop offset="100%" stop-color="#023b30"/>
+            </linearGradient>
+            <radialGradient id="emeraldFace" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#3fcf9e" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="url(#emeraldGrad)" opacity="0.92"/>
+          <polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="url(#emeraldFace)"/>
+          <polygon points="80,45 120,45 155,80 155,120 120,155 80,155 45,120 45,80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <line x1="60" y1="20" x2="80" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="140" y1="20" x2="120" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="180" y1="60" x2="155" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="180" y1="140" x2="155" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="140" y1="180" x2="120" y2="155" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="60" y1="180" x2="80" y2="155" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="20" y1="140" x2="45" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="20" y1="60" x2="45" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <polygon points="100,50 130,70 130,130 100,150 70,130 70,70" fill="rgba(255,255,255,0.08)"/>
+        </svg>
+      </div>
+      <div class="gem-stats-list reveal reveal-delay-1">
+        <div style="margin-bottom:2rem">
+          <span class="eyebrow" style="display:block;margin-bottom:1rem">Propiedades Gemológicas</span>
+          <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1rem">Cada piedra, una ciencia exacta</h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--ink-dim)">Nuestros gemólogos certificados evalúan cada esmeralda bajo los estándares internacionales más exigentes antes de que ingrese a nuestra colección.</p>
+        </div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Dureza Mohs</span><span class="gem-stat-value">7.5 – 8.0</span></div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Tono Primario</span><span class="gem-stat-value">Verde azulado</span></div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Verificación de origen</span><span class="gem-stat-value">Certificado de laboratorio</span></div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Divulgación de tratamiento</span><span class="gem-stat-value">Totalmente transparente</span></div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Formación</span><span class="gem-stat-value">~ 50 millones de años</span></div>
+        <div class="gem-stat-row"><span class="gem-stat-label">Índice de refracción</span><span class="gem-stat-value">1.565 – 1.602</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grados de color -->
+  <section class="grades-section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow">Clasificación de Color</span>
+        <h2>Cómo leemos el verde</h2>
+        <p class="lead">El color es el factor más determinante en el valor de una esmeralda colombiana. Así clasificamos lo que seleccionamos.</p>
+      </div>
+      <div class="grades-grid reveal">
+        <div class="grade-block">
+          <div class="grade-color" style="background:linear-gradient(135deg,#0d5038,#046A4E)"></div>
+          <h4>Extraordinary</h4>
+          <p>Saturación máxima, tono entre 75-85%. Menos del 1% de las esmeraldas alcanza esta categoría. Reservada para coleccionistas.</p>
+        </div>
+        <div class="grade-block">
+          <div class="grade-color" style="background:linear-gradient(135deg,#046A4E,#0d8a64)"></div>
+          <h4>Fine</h4>
+          <p>Verde vívido de alta saturación. Excelente transparencia y brillo. El estándar de nuestra colección principal.</p>
+        </div>
+        <div class="grade-block">
+          <div class="grade-color" style="background:linear-gradient(135deg,#0d8a64,#3fcf9e)"></div>
+          <h4>Good</h4>
+          <p>Excelente relación calidad-valor. Verde limpio con mínimas inclusiones. Ideal para joyería cotidiana de lujo.</p>
+        </div>
+        <div class="grade-block">
+          <div class="grade-color" style="background:linear-gradient(135deg,#3fcf9e,#78e8c0)"></div>
+          <h4>Commercial</h4>
+          <p>Color agradable con inclusiones visibles. Accesible y con la autenticidad colombiana que nos distingue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificación -->
+  <section class="cert-section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow" style="color:var(--champagne)">Certificación</span>
+        <h2>Documentación sin compromisos</h2>
+        <p class="lead" style="color:rgba(248,245,239,0.55);max-width:52ch;margin:0 auto">Todo lo que vendemos llega con documentación trazable desde la mina hasta su mano.</p>
+      </div>
+      <div class="cert-cards reveal">
+        <div class="cert-card-item">
+          <div class="glyph">I.</div>
+          <h4>Certificación GIA</h4>
+          <p>El Gemological Institute of America es el estándar global. Cada esmeralda Fine y Extraordinary lleva su certificado GIA con número de registro único.</p>
+        </div>
+        <div class="cert-card-item">
+          <div class="glyph">II.</div>
+          <h4>Certificado de Origen</h4>
+          <p>Documentación que traza la piedra desde Muzo, Chivor o Coscuez. Esencial para coleccionistas e inversores que priorizan la procedencia.</p>
+        </div>
+        <div class="cert-card-item">
+          <div class="glyph">III.</div>
+          <h4>Divulgación de Tratamientos</h4>
+          <p>Declaramos todos los tratamientos aplicados — aceite menor, resina o sin tratamiento — con total transparencia antes de cualquier transacción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-emeralds -->
+
+<!-- ==========================================
+     PAGE: BESPOKE
+=========================================== -->
+<div id="page-bespoke" class="page">
+
+  <div class="bespoke-hero-section">
+    <div style="max-width:var(--max-w);width:100%">
+      <span class="eyebrow" style="color:var(--champagne);display:block;margin-bottom:1.2rem">Atelier Privé</span>
+      <h1>Una pieza que no existe <em>en ningún otro lugar</em> del mundo</h1>
+      <p>Cada comisión comienza con una conversación y termina con una joya con historia propia — trazable, certificada y hecha a mano en Bogotá.</p>
+    </div>
+  </div>
+
+  <!-- Proceso -->
+  <section class="process-section">
+    <div class="section-inner">
+      <div class="section-head reveal" style="text-align:left;margin-bottom:3rem">
+        <span class="eyebrow">El Proceso</span>
+        <h2>De la visión a la herencia</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">I.</div>
+          <div class="step-title">
+            <span class="eyebrow">Semana 1</span>
+            <h4>Consulta Privada</h4>
+          </div>
+          <p class="step-detail">Una reunión confidencial — en persona en nuestro atelier de Bogotá o por video — para entender su visión, la ocasión, el presupuesto y el legado que quiere crear. Sin presiones, sin compromisos.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">II.</div>
+          <div class="step-title">
+            <span class="eyebrow">Semana 1-2</span>
+            <h4>Selección de Gema</h4>
+          </div>
+          <p class="step-detail">Nuestros gemólogos presentan una selección curada de esmeraldas y diamantes certificados que coinciden con su brief. Cada piedra viene con su documentación completa y puede ser examinada en vivo.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">III.</div>
+          <div class="step-title">
+            <span class="eyebrow">Semana 2-3</span>
+            <h4>Diseño y Bocetos</h4>
+          </div>
+          <p class="step-detail">Dibujos a mano de nuestros diseñadores traducen el concepto en forma portátil. Refinamos junto a usted hasta que cada detalle — proporciones, acabados, metales — sea exactamente lo que imaginó.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">IV.</div>
+          <div class="step-title">
+            <span class="eyebrow">Semana 3-4</span>
+            <h4>Modelo 3D</h4>
+          </div>
+          <p class="step-detail">Un modelo digital permite perfeccionar cada proporción y detalle de engaste antes de que comience la fabricación. Usted aprueba antes de que toquemos el metal.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">V.</div>
+          <div class="step-title">
+            <span class="eyebrow">Semana 4-8</span>
+            <h4>Fabricación en Atelier</h4>
+          </div>
+          <p class="step-detail">Maestros joyeros elaboran la pieza a mano usando técnicas refinadas durante generaciones. Cada etapa — fundición, engaste, pulido — se realiza bajo control de calidad estricto.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">VI.</div>
+          <div class="step-title">
+            <span class="eyebrow">Entrega</span>
+            <h4>Presentación Privada</h4>
+          </div>
+          <p class="step-detail">Su pieza llega con certificación completa, documentación de procedencia y una presentación privada en nuestro atelier. Junto a ella, el relato de cada decisión tomada en su nombre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="bespoke-form-section">
+    <div class="bespoke-form-wrap">
+      <div class="section-head reveal" style="text-align:left">
+        <span class="eyebrow">Comenzar</span>
+        <h2>Solicitar una consulta privada</h2>
+        <p style="font-size:0.95rem;color:var(--ink-dim);line-height:1.8;margin-top:0.5rem;max-width:52ch">Cuéntenos sobre su visión. Un gemólogo de Fiathario le contactará en menos de 48 horas para coordinar la primera consulta.</p>
+      </div>
+      <form class="form-grid" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="b-name">Nombre</label>
+          <input type="text" id="b-name" placeholder="Su nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="b-email">Correo electrónico</label>
+          <input type="email" id="b-email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="b-phone">WhatsApp / Teléfono</label>
+          <input type="tel" id="b-phone" placeholder="+57 300 000 0000">
+        </div>
+        <div class="form-group">
+          <label for="b-type">Tipo de pieza</label>
+          <select id="b-type">
+            <option value="">Seleccionar…</option>
+            <option>Anillo de compromiso</option>
+            <option>Anillo de cóctel</option>
+            <option>Aretes</option>
+            <option>Colgante / Collar</option>
+            <option>Brazalete</option>
+            <option>Gema de inversión</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="b-budget">Presupuesto aproximado</label>
+          <select id="b-budget">
+            <option value="">Seleccionar…</option>
+            <option>USD $5,000 – $15,000</option>
+            <option>USD $15,000 – $50,000</option>
+            <option>USD $50,000 – $150,000</option>
+            <option>USD $150,000+</option>
+            <option>Prefiero discutirlo en consulta</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="b-timeline">Plazo ideal</label>
+          <select id="b-timeline">
+            <option value="">Seleccionar…</option>
+            <option>Urgente (menos de 6 semanas)</option>
+            <option>2-3 meses</option>
+            <option>3-6 meses</option>
+            <option>Sin prisa</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="b-vision">Cuéntenos su visión</label>
+          <textarea id="b-vision" placeholder="Descríbanos la ocasión, los materiales que imagina, las referencias de estilo o cualquier detalle que considere relevante…"></textarea>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="btn btn-dark" style="align-self:flex-start">Enviar Solicitud →</button>
+        </div>
+      </form>
+      <div id="formSuccess" style="display:none;background:var(--emerald-dim);border:1px solid var(--emerald);padding:1.5rem 2rem;margin-top:1rem">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--emerald)">Gracias por su mensaje. Un gemólogo le contactará en las próximas 48 horas.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-bespoke -->
+
+<!-- ==========================================
+     PAGE: JOURNAL
+=========================================== -->
+<div id="page-journal" class="page">
+
+  <div class="journal-featured">
+    <div class="journal-featured-inner">
+      <div class="journal-featured-thumb"></div>
+      <div class="journal-featured-text">
+        <span class="eyebrow">Artículo Destacado</span>
+        <h2>Por qué las esmeraldas colombianas dominan el mercado global de gemas</h2>
+        <p>Un análisis de los factores geológicos, históricos y económicos que hacen de Colombia la fuente inigualable de las mejores esmeraldas del mundo — y por qué eso no cambiará.</p>
+        <button class="btn" style="background:var(--ivory);color:var(--ink);border:1px solid var(--ivory)">Leer el artículo →</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="journal-articles">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow">El Journal</span>
+        <h2>Notas sobre gemas, oficio y procedencia</h2>
+      </div>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card reveal">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#1a2e25,#0d3d2c)"></div>
+        <span class="eyebrow">Herencia</span>
+        <h3>Dentro de las minas de Muzo</h3>
+        <p>Una mirada a la geología y la historia detrás de la fuente de esmeraldas más codiciada del mundo, desde los cronistas españoles hasta hoy.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+      <article class="article-card reveal reveal-delay-1">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#2a2015,#3d3020)"></div>
+        <span class="eyebrow">Oficio</span>
+        <h3>El arte del talle esmeralda</h3>
+        <p>Por qué este talle contenido y rectilíneo ha permanecido como el estándar para las esmeraldas finas durante siglos — y cómo se ejecuta en nuestro atelier.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+      <article class="article-card reveal reveal-delay-2">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#c8bfb0,#d4c9b8)"></div>
+        <span class="eyebrow">Colección</span>
+        <h3>Construir un portafolio de gemas de color</h3>
+        <p>Una guía para nuevos coleccionistas: certificación, procedencia, diversificación y custodia a largo plazo para esmeraldas de inversión.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+      <article class="article-card reveal">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#23302b,#152620)"></div>
+        <span class="eyebrow">Educación</span>
+        <h3>Tratamientos en esmeraldas: todo lo que debe saber</h3>
+        <p>La diferencia entre aceite menor, aceite significativo y resina epoxi — y por qué la divulgación total importa tanto como la piedra misma.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+      <article class="article-card reveal reveal-delay-1">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#2a1f15,#40301d)"></div>
+        <span class="eyebrow">Diseño</span>
+        <h3>Oro amarillo vs. oro blanco: eligiendo el metal correcto</h3>
+        <p>Cómo el metal de la montura transforma la percepción de una esmeralda colombiana — y las reglas no escritas de los maestros joyeros.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+      <article class="article-card reveal reveal-delay-2">
+        <div class="article-thumb" style="background:linear-gradient(145deg,#1a2030,#252e40)"></div>
+        <span class="eyebrow">Mercado</span>
+        <h3>Esmeraldas como activo alternativo en 2025</h3>
+        <p>Un análisis del comportamiento histórico de las esmeraldas finas frente a activos tradicionales y su lugar en un portafolio diversificado.</p>
+        <span class="read-link">Leer →</span>
+      </article>
+    </div>
+  </section>
+
+</div><!-- /page-journal -->
+
+<!-- ==========================================
+     PAGE: CONTACTO
+=========================================== -->
+<div id="page-contact" class="page">
+
+  <div class="contact-layout">
+    <div class="contact-info">
+      <span class="eyebrow">Contacto</span>
+      <h1>Comenzar su<br>viaje con Fiathario</h1>
+      <p>Ya sea que busque una gema singular, una comisión bespoke o una guía para su portafolio de esmeraldas, nuestro equipo está disponible por cita privada.</p>
+
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-method-icon">W</div>
+          <div class="contact-method-info">
+            <h5>WhatsApp</h5>
+            <a href="https://wa.me/573000000000" target="_blank">+57 300 000 0000</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">@</div>
+          <div class="contact-method-info">
+            <h5>Correo</h5>
+            <a href="mailto:hola@fiathario.com">hola@fiathario.com</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">◈</div>
+          <div class="contact-method-info">
+            <h5>Atelier</h5>
+            <p>Bogotá, Colombia<br><span style="font-size:0.82rem;color:var(--ink-dim)">Dirección exacta por cita</span></p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">◷</div>
+          <div class="contact-method-info">
+            <h5>Horario</h5>
+            <p>Lunes – Sábado<br><span style="font-size:0.82rem;color:var(--ink-dim)">9:00 – 18:00 COT, con cita previa</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <h3>Enviar un mensaje</h3>
+      <form class="form-grid" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="c-name">Nombre</label>
+          <input type="text" id="c-name" placeholder="Su nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="c-email">Correo</label>
+          <input type="email" id="c-email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="c-phone">WhatsApp / Teléfono</label>
+          <input type="tel" id="c-phone" placeholder="+57 300 000 0000">
+        </div>
+        <div class="form-group">
+          <label for="c-subject">Asunto</label>
+          <select id="c-subject">
+            <option value="">Seleccionar…</option>
+            <option>Cita privada</option>
+            <option>Pieza bespoke</option>
+            <option>Gema de inversión</option>
+            <option>Colecciones</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="c-message">Mensaje</label>
+          <textarea id="c-message" placeholder="Cuéntenos cómo podemos ayudarle…" style="min-height:110px"></textarea>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="btn btn-dark" style="align-self:flex-start">Enviar Mensaje →</button>
+        </div>
+      </form>
+      <div id="contactSuccess" style="display:none;background:var(--emerald-dim);border:1px solid var(--emerald);padding:1.2rem 1.5rem;margin-top:1rem">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--emerald)">Mensaje recibido. Le contactaremos en las próximas 48 horas.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-contact -->
+
+<!-- ==========================================
+     FOOTER (shared)
+=========================================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" onclick="navigate('home')" style="cursor:pointer">FIATHARIO</div>
+      <p>Esmeraldas colombianas, diamantes y alta joyería bespoke, creada para coleccionistas y entendidos.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explorar</h5>
+      <ul>
+        <li><button onclick="navigate('collections')">Colecciones</button></li>
+        <li><button onclick="navigate('emeralds')">Esmeraldas</button></li>
+        <li><button onclick="navigate('bespoke')">Bespoke</button></li>
+        <li><button onclick="navigate('contact')">Cita Privada</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>La Maison</h5>
+      <ul>
+        <li><button onclick="navigate('home')">Sobre Fiathario</button></li>
+        <li><button onclick="navigate('journal')">Journal</button></li>
+        <li><button onclick="navigate('emeralds')">Certificación</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="https://wa.me/573000000000" target="_blank">WhatsApp</a></li>
+        <li><a href="mailto:hola@fiathario.com">Email</a></li>
+        <li><button onclick="navigate('contact')">Formulario</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Fiathario Jewelry. Todos los derechos reservados.</span>
+    <span>Bogotá · Hecho en Colombia</span>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/573000000000" target="_blank" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ========================================
+   CATALOG DATA
+======================================== */
+const pieces = [
+  { id:1, cat:'rings', eyebrow:'Anillo · Muzo Origin', title:'The Muzo Solitaire', desc:'Esmeralda Muzo 3.2ct, oro amarillo 18k. Certificado GIA.', price:'Consultar precio', tag:'Muzo', bg:'linear-gradient(145deg,#d4c9b8,#c8bfb0)' },
+  { id:2, cat:'earrings', eyebrow:'Aretes · Alta Joyería', title:'Chivor Drop', desc:'Par de esmeraldas Chivor 2.1ct c/u, oro blanco 18k.', price:'Consultar precio', tag:'Chivor', bg:'linear-gradient(145deg,#c8bfb0,#beb4a8)' },
+  { id:3, cat:'pendants', eyebrow:'Colgante · Edición Única', title:'Pendant Coscuez', desc:'Esmeralda hexagonal Coscuez 5.4ct en platino. Pieza única.', price:'Consultar precio', tag:'Coscuez', bg:'linear-gradient(145deg,#1a2e25,#0d3d2c)' },
+  { id:4, cat:'rings', eyebrow:'Anillo · Bespoke', title:'Eternity Muzo', desc:'Banda eternidad con esmeraldas Muzo calibradas en oro amarillo 18k.', price:'Consultar precio', tag:'Muzo', bg:'linear-gradient(145deg,#d4c9b8,#d8cfc4)' },
+  { id:5, cat:'investment', eyebrow:'Gema · Inversión', title:'Muzo Collector 6.1ct', desc:'Esmeralda no tratada de 6.1ct. Certificado AGL origen Muzo.', price:'Consultar precio', tag:'Sin tratamiento', bg:'linear-gradient(145deg,#0d3d2c,#1a5038)' },
+  { id:6, cat:'bracelets', eyebrow:'Brazalete · Alta Joyería', title:'Tennis Emerald', desc:'22 esmeraldas colombianas calibradas en oro amarillo 18k.', price:'Consultar precio', tag:'Colección', bg:'linear-gradient(145deg,#c8bfb0,#d4c9b8)' },
+  { id:7, cat:'rings', eyebrow:'Anillo · Compromiso', title:'Chivor Halo', desc:'Esmeralda Chivor 2.8ct con halo de brillantes en platino.', price:'Consultar precio', tag:'Chivor', bg:'linear-gradient(145deg,#beb4a8,#c8bfb0)' },
+  { id:8, cat:'pendants', eyebrow:'Colgante · Herencia', title:'Drop Oval Muzo', desc:'Esmeralda oval Muzo 4.2ct en montura de oro amarillo articulada.', price:'Consultar precio', tag:'Muzo', bg:'linear-gradient(145deg,#1a2e25,#0d5038)' },
+  { id:9, cat:'investment', eyebrow:'Gema · Inversión', title:'Coscuez Collector 8.3ct', desc:'Esmeralda de 8.3ct tratamiento menor. Certificado GIA.', price:'Consultar precio', tag:'Inversión', bg:'linear-gradient(145deg,#046A4E,#035a41)' },
+];
+
+let activeFilter = 'all';
+
+function renderCatalog(filter) {
+  const grid = document.getElementById('catalogGrid');
+  const filtered = filter === 'all' ? pieces : pieces.filter(p => p.cat === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="piece-card reveal" onclick="navigate('bespoke')">
+      <div class="piece-thumb" style="background:${p.bg}">
+        <div class="piece-thumb-inner">
+          ${gemSVG(p.cat)}
+        </div>
+        <span class="piece-tag">${p.tag}</span>
+        <div class="piece-thumb-overlay"><span>Ver Detalles</span></div>
+      </div>
+      <div class="piece-info">
+        <span class="eyebrow">${p.eyebrow}</span>
+        <h4>${p.title}</h4>
+        <p>${p.desc}</p>
+        <div class="piece-price">${p.price}</div>
+      </div>
+    </div>
+  `).join('');
+  initReveal();
+}
+
+function gemSVG(cat) {
+  const svgMap = {
+    rings: `<svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" style="width:40%;opacity:0.7"><defs><radialGradient id="rg" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3fcf9e"/><stop offset="100%" stop-color="#04392a"/></radialGradient><linearGradient id="rb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e3c4"/><stop offset="100%" stop-color="#9c7c43"/></linearGradient></defs><ellipse cx="50" cy="100" rx="32" ry="18" fill="none" stroke="url(#rb)" stroke-width="7"/><polygon points="50,15 68,38 60,72 40,72 32,38" fill="url(#rg)"/><polygon points="50,25 42,44 58,44" fill="rgba(255,255,255,0.3)"/></svg>`,
+    earrings: `<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" style="width:50%;opacity:0.7"><defs><radialGradient id="eg" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#5ee0b0"/><stop offset="100%" stop-color="#046A4E"/></radialGradient><linearGradient id="eb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e3c4"/><stop offset="100%" stop-color="#9c7c43"/></linearGradient></defs><ellipse cx="30" cy="60" rx="22" ry="12" fill="none" stroke="url(#eb)" stroke-width="5"/><polygon points="30,14 46,32 38,58 22,58 14,32" fill="url(#eg)"/><ellipse cx="90" cy="60" rx="22" ry="12" fill="none" stroke="url(#eb)" stroke-width="5"/><polygon points="90,14 106,32 98,58 82,58 74,32" fill="url(#eg)"/></svg>`,
+    pendants: `<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" style="width:40%;opacity:0.7"><defs><radialGradient id="pg" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3fcf9e"/><stop offset="100%" stop-color="#04392a"/></radialGradient><linearGradient id="pb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e3c4"/><stop offset="100%" stop-color="#9c7c43"/></linearGradient></defs><rect x="30" y="20" width="40" height="60" rx="2" fill="none" stroke="url(#pb)" stroke-width="4"/><polygon points="50,30 62,42 62,58 50,70 38,58 38,42" fill="url(#pg)"/><line x1="50" y1="80" x2="50" y2="95" stroke="url(#pb)" stroke-width="3"/></svg>`,
+    bracelets: `<svg viewBox="0 0 130 80" xmlns="http://www.w3.org/2000/svg" style="width:55%;opacity:0.7"><defs><linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e3c4"/><stop offset="100%" stop-color="#9c7c43"/></linearGradient></defs><ellipse cx="65" cy="40" rx="55" ry="25" fill="none" stroke="url(#bg2)" stroke-width="8"/></svg>`,
+    investment: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:40%;opacity:0.7"><defs><radialGradient id="ig" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3fcf9e"/><stop offset="100%" stop-color="#04392a"/></radialGradient></defs><polygon points="50,10 90,35 90,65 50,90 10,65 10,35" fill="url(#ig)"/><polygon points="50,22 78,40 78,60 50,78 22,60 22,40" fill="rgba(255,255,255,0.15)"/></svg>`,
+  };
+  return svgMap[cat] || svgMap.rings;
+}
+
+function filterPieces(btn, filter) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = filter;
+  renderCatalog(filter);
+}
+
+/* ========================================
+   ROUTER
+======================================== */
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // Update nav active state
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === page);
+  });
+  // Re-init reveal for new page
+  setTimeout(initReveal, 50);
+  // Re-render catalog
+  if (page === 'collections') renderCatalog(activeFilter);
+  // Update hash
+  window.location.hash = page === 'home' ? '' : page;
+}
+
+/* ========================================
+   SCROLL REVEAL
+======================================== */
+let revealObserver;
+function initReveal() {
+  if (revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => revealObserver.observe(el));
+}
+
+/* ========================================
+   HEADER SCROLL
+======================================== */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ========================================
+   MOBILE NAV
+======================================== */
+const navToggle = document.getElementById('navToggle');
+const navMobile = document.getElementById('navMobile');
+const navOverlay = document.getElementById('navOverlay');
+
+navToggle.addEventListener('click', () => {
+  const isOpen = navMobile.classList.toggle('open');
+  navOverlay.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+function closeNav() {
+  navMobile.classList.remove('open');
+  navOverlay.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* ========================================
+   FORM SUBMIT
+======================================== */
+function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  form.style.display = 'none';
+  // Show success in whichever page we're on
+  const successes = document.querySelectorAll('[id$="Success"]');
+  successes.forEach(s => { if (s.closest('.page.active')) s.style.display = 'block'; });
+}
+
+/* ========================================
+   HASH ROUTING ON LOAD
+======================================== */
+window.addEventListener('load', () => {
+  // Hide preloader
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+  }, 1400);
+
+  // Route from hash
+  const hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    navigate(hash);
+  } else {
+    navigate('home');
+  }
+});
+
+// Logo keyboard
+document.querySelector('.logo').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') navigate('home');
+});
+</script>
+</body>
+</html>
